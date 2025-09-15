@@ -10,4 +10,6 @@ jobs:
     steps:
       - name: Trigger Jenkins build
         run: |
+          AMI_ID="ami-${GITHUB_SHA::8}"
+          echo "Using AMI: $AMI_ID"
           curl -X POST http://ip10-0-13-6-d33s7d9ntdlhbpdsdbfg-8080.direct.lab-boris.fr/job/iac-pipeline/buildWithParameters --user "root:11fed03929f006c79b249744a2f37b0087" --data-urlencode "ami_id=$AMI_ID"
